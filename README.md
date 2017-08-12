@@ -1,2 +1,2 @@
 # SportBets
-Sports betting panel
+This project is still in development.
