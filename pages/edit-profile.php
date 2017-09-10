@@ -150,7 +150,7 @@
 										echo "
 										<label>General options:</label>
 										<div class='checkbox checkbox-primary'>
-											<input id='checkbox' type='checkbox' value='0'>
+											<input id='checkbox' name='checkbox' type='checkbox' value='0'>
 											<label for='checkbox'>Promote to administrator</label>
 										</div>
 										";	
@@ -175,7 +175,7 @@
 						?>
 						
 						<h4 class="header-title m-t-0">Quick Tasks</h4>
-						<p class="text-muted font-13 m-b-30">These quick tasks will only apply to Datageni's account.</p>
+						<p class="text-muted font-13 m-b-30">These quick tasks will only apply to <?php echo getData($getId, 'username'); ?>'s account.</p>
 
 						<div class="row text-xs-center m-t-30">
 							<div class="col-xs-12">
@@ -195,6 +195,7 @@
 							</div>
 						</div>
 					
+						<h4 class="header-title m-t-0">2FA QR Code</h4>
 						<div class="row text-xs-center m-t-30">
 							<div class="col-xs-12">
 								<form action='' method='POST'>
