@@ -113,26 +113,26 @@
 						<?php if(isset($_GET['uid'])) { $getId = $_GET['uid']; } ?>
 						<?php if(isset($_POST['edit-user'])) { EditUser(); } ?>
 
-						<h4 class="header-title m-t-0">Datageni's Profile:</h4>
+						<h4 class="header-title m-t-0"><?php echo getData($getId, 'username'); ?>'s Profile:</h4>
 						<p class="text-muted font-13 m-b-30">Please keep in mind that any changes cannot be reverted upon submit, unless you keep an old database backup.</p>
 
 						<div class="row text-xs m-t-30">
 							<div class="col-xs-12">
 								<form action='' method='POST'>
 									<label>Username:</label>
-									<input name='username' id='username' class='form-control form-control-lg m-b-20' type='text' value='<?php getData($getId, 'username'); ?>'>
+									<input name='username' id='username' class='form-control form-control-lg m-b-20' type='text' value='<?php echo getData($getId, 'username'); ?>'>
 
 									<label>Email address:</label>
-									<input name='email' id='email' class="form-control form-control-lg m-b-20" type='email' value='<?php getData($getId, 'email'); ?>'>
+									<input name='email' id='email' class="form-control form-control-lg m-b-20" type='email' value='<?php echo getData($getId, 'email'); ?>'>
 									
 									<label>Subscription days left:</label>
-									<input name='days' id='days' class="form-control form-control-lg m-b-20" type='text' value='<?php getData($getId, 'expiry'); ?>'>
+									<input name='days' id='days' class="form-control form-control-lg m-b-20" type='text' value='<?php echo getData($getId, 'expiry'); ?>'>
 									
 									<label>Members referred</label>
-									<input name='referrals' id='referrals' class="form-control form-control-lg m-b-20" type='text' value='<?php getData($getId, 'referrals'); ?>' disabled>
+									<input name='referrals' id='referrals' class="form-control form-control-lg m-b-20" type='text' value='<?php echo getData($getId, 'referrals'); ?>' disabled>
 									
 									<label>Registration date:</label>
-									<input name='date' id='date' class="form-control form-control-lg m-b-20" type='text' value='<?php getData($getId, 'regdate'); ?>' disabled>
+									<input name='date' id='date' class="form-control form-control-lg m-b-20" type='text' value='<?php echo getData($getId, 'regdate'); ?>' disabled>
 									
 									<?php
 									if(CheckAdmin($getId) == 1)
@@ -140,8 +140,8 @@
 										echo "
 										<label>General options:</label>
 										<div class='checkbox checkbox-primary'>
-											<input id='checkbox2' type='checkbox' checked>
-											<label for='checkbox2'>Promote to administrator</label>
+											<input id='checkbox' type='checkbox' value='1' checked>
+											<label for='checkbox'>Promote to administrator</label>
 										</div>
 										";	
 									}
@@ -150,8 +150,8 @@
 										echo "
 										<label>General options:</label>
 										<div class='checkbox checkbox-primary'>
-											<input id='checkbox2' type='checkbox'>
-											<label for='checkbox2'>Promote to administrator</label>
+											<input id='checkbox' type='checkbox' value='0'>
+											<label for='checkbox'>Promote to administrator</label>
 										</div>
 										";	
 									}
@@ -177,6 +177,24 @@
 						<h4 class="header-title m-t-0">Quick Tasks</h4>
 						<p class="text-muted font-13 m-b-30">These quick tasks will only apply to Datageni's account.</p>
 
+						<div class="row text-xs-center m-t-30">
+							<div class="col-xs-12">
+								<form action='' method='POST'>
+									<button type='submit' name='resetpass' class='btn btn-primary waves-effect waves-light btn-lg' data-toggle='tooltip' data-placement='top' 
+											title='Click here to reset the password.'>Reset Password</button>
+									
+									<button type='submit' name='reset2fa' class='btn btn-primary waves-effect waves-light btn-lg' data-toggle='tooltip' data-placement='top' 
+											title='Click here to reset the 2FA key.'>Reset 2FA code</button><br></br>
+									
+									<button type='submit' name='disableacc' class='btn btn-primary waves-effect waves-light btn-lg' data-toggle='tooltip' data-placement='top' 
+											title='Click here to suspend the user.'>Disable Account</button>
+									
+									<button type='submit' name='banacc' class='btn btn-primary waves-effect waves-light btn-lg' data-toggle='tooltip' data-placement='top' 
+											title='Click here to ban the user.'>Ban Account</button>
+								</form>
+							</div>
+						</div>
+					
 						<div class="row text-xs-center m-t-30">
 							<div class="col-xs-12">
 								<form action='' method='POST'>

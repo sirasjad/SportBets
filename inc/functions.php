@@ -1332,7 +1332,24 @@ function FindUser()
 
 function EditUser()
 {
-	//
+	global $pdo;
+	if($_POST['username'] !== '' AND $_POST['email'] !== '' AND $_POST['days'] !== '')
+	{
+		$username = $_POST['username'];
+		$email = $_POST['email'];
+		$days = $_POST['days'];
+		$checkbox = $_POST['checkbox'];
+		
+		$query = $pdo->prepare("UPDATE accounts SET username = :username, email = :email, days = :days, admin = :admin");
+		$query->execute(array(':username' => $username, ':email' => $email, ':days' => $days, ':admin' => $checkbox));
+
+		Logs(2, "Edited $username's profile");
+		GetMessage("Success!", "You have edited $username's profile.", 3);
+	}
+	else
+	{
+		GetMessage("Oh snap!", "Make sure you fill out all the fields below!", 1);
+	}
 }
 
 ?>
