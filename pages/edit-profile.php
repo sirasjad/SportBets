@@ -120,25 +120,42 @@
 							<div class="col-xs-12">
 								<form action='' method='POST'>
 									<label>Username:</label>
-									<input name='username' id='username' class='form-control form-control-lg m-b-20' type='text' value='Datageni'>
+									<input name='username' id='username' class='form-control form-control-lg m-b-20' type='text' value='<?php getData($getId, 'username'); ?>'>
 
 									<label>Email address:</label>
-									<input name='email' id='email' class="form-control form-control-lg m-b-20" type='email' value='datageni@online.no'>
+									<input name='email' id='email' class="form-control form-control-lg m-b-20" type='email' value='<?php getData($getId, 'email'); ?>'>
 									
 									<label>Subscription days left:</label>
-									<input name='days' id='days' class="form-control form-control-lg m-b-20" type='text' value='30'>
+									<input name='days' id='days' class="form-control form-control-lg m-b-20" type='text' value='<?php getData($getId, 'expiry'); ?>'>
 									
 									<label>Members referred</label>
-									<input name='referrals' id='referrals' class="form-control form-control-lg m-b-20" type='text' value='4' disabled>
+									<input name='referrals' id='referrals' class="form-control form-control-lg m-b-20" type='text' value='<?php getData($getId, 'referrals'); ?>' disabled>
 									
 									<label>Registration date:</label>
-									<input name='date' id='date' class="form-control form-control-lg m-b-20" type='text' value='13 July 2017' disabled>
+									<input name='date' id='date' class="form-control form-control-lg m-b-20" type='text' value='<?php getData($getId, 'regdate'); ?>' disabled>
 									
-									<label>General options:</label>
-									<div class="checkbox checkbox-primary">
-										<input id="checkbox2" type="checkbox">
-										<label for="checkbox2">Promote to administrator</label>
-									</div>
+									<?php
+									if(CheckAdmin($getId) == 1)
+									{
+										echo "
+										<label>General options:</label>
+										<div class='checkbox checkbox-primary'>
+											<input id='checkbox2' type='checkbox' checked>
+											<label for='checkbox2'>Promote to administrator</label>
+										</div>
+										";	
+									}
+									else
+									{
+										echo "
+										<label>General options:</label>
+										<div class='checkbox checkbox-primary'>
+											<input id='checkbox2' type='checkbox'>
+											<label for='checkbox2'>Promote to administrator</label>
+										</div>
+										";	
+									}
+									?>
 									
 									<center><button type='submit' name='edit-user' class="btn btn-primary waves-effect waves-light btn-lg">Edit User</button></center>
 								</form>
@@ -163,13 +180,17 @@
 						<div class="row text-xs-center m-t-30">
 							<div class="col-xs-12">
 								<form action='' method='POST'>
-									<button type='submit' name='resetpass' class='btn btn-primary waves-effect waves-light btn-lg' data-toggle='tooltip' data-placement='top' title='Click here to reset the password.'>Reset Password</button>
+									<button type='submit' name='resetpass' class='btn btn-primary waves-effect waves-light btn-lg' data-toggle='tooltip' data-placement='top' 
+											title='Click here to reset the password.'>Reset Password</button>
 									
-									<button type='submit' name='reset2fa' class='btn btn-primary waves-effect waves-light btn-lg' data-toggle='tooltip' data-placement='top' title='Click here to reset the 2FA key.'>Reset 2FA code</button><br></br>
+									<button type='submit' name='reset2fa' class='btn btn-primary waves-effect waves-light btn-lg' data-toggle='tooltip' data-placement='top' 
+											title='Click here to reset the 2FA key.'>Reset 2FA code</button><br></br>
 									
-									<button type='submit' name='disableacc' class='btn btn-primary waves-effect waves-light btn-lg' data-toggle='tooltip' data-placement='top' title='Click here to suspend the user.'>Disable Account</button>
+									<button type='submit' name='disableacc' class='btn btn-primary waves-effect waves-light btn-lg' data-toggle='tooltip' data-placement='top' 
+											title='Click here to suspend the user.'>Disable Account</button>
 									
-									<button type='submit' name='banacc' class='btn btn-primary waves-effect waves-light btn-lg' data-toggle='tooltip' data-placement='top' title='Click here to ban the user.'>Ban Account</button>
+									<button type='submit' name='banacc' class='btn btn-primary waves-effect waves-light btn-lg' data-toggle='tooltip' data-placement='top' 
+											title='Click here to ban the user.'>Ban Account</button>
 								</form>
 							</div>
 						</div>
