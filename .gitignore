@@ -1,2 +1,3 @@
 # GITIGNORE LIST:
 inc/db.php
+db_backups/*
