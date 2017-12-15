@@ -1,2 +1,2 @@
 # SportBets
-Sports betting panel (WIP)
+To be updated...
