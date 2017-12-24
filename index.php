@@ -38,4 +38,5 @@ switch($_GET['page'])
 	case 'settings': include("pages/settings.php"); break;
 	default: include("pages/login.php"); break;
 }
+
 ?>
